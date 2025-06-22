@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Belencita</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      cursor: url('https://cur.cursors-4u.net/nature/nat-11/nat1014.cur'), auto;
+    }
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom right, #fff0f5, #fffafc);
+      color: #333;
+    }
+    nav {
+      background: #ffccdd;
+      padding: 15px;
+      text-align: center;
+      position: sticky; top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #b30059;
+      font-weight: bold;
+    }
+    section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .heart-shape {
+      width: 180px;
+      height: 160px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .heart-shape::before, .heart-shape::after {
+      content: "";
+      width: 90px;
+      height: 140px;
+      position: absolute;
+      top: 0;
+      background: radial-gradient(circle at 70% 30%, #ff99cc, #ff4da6);
+      border-radius: 75px 75px 0 0;
+    }
+    .heart-shape::before {
+      left: 90px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    .heart-shape::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+    .contador {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #b30059;
+      margin: 10px 0;
+    }
+    .mensaje {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+    .poema {
+      background: #ffeef5;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .poema p {
+      margin: 0;
+      line-height: 1.5;
+    }
+    .poema button {
+      background: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #playMusicBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff66a3;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 2000;
+    }
+    #youtubePlayer {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      height: 170px;
+      z-index: 1500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    #youtubePlayer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botón para iniciar música -->
+  <button id="playMusicBtn" onclick="mostrarMusica()">🎶 Reproducir música</button>
+
+  <!-- YouTube visible y pequeño para que funcione -->
+  <div id="youtubePlayer">
+    <iframe id="youtubeFrame"
+      src=""
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <nav>
+    <a href="#enamore">💘 Enamoramiento</a>
+    <a href="#novios">💍 Novios</a>
+    <a href="#nacimiento">🎂 Nacimiento</a>
+    <a href="#poemas">📖 Poemas</a>
+  </nav>
+
+  <section id="enamore">
+    <div class="heart-shape"></div>
+    <h2>Desde que me enamoré de ti</h2>
+    <p class="mensaje">El 26 de marzo de 2024 mi corazón decidió quedarse contigo para siempre, Belencita</p>
+    <div class="contador" id="c1"></div>
+    <p class="mensaje">Cada segundo contigo es un regalo, mi niña hermosa. Eres mi cielo, mi todo</p>
+  </section>
+
+  <section id="novios">
+    <div class="heart-shape"></div>
+    <h2>Desde que somos novios</h2>
+    <p class="mensaje">El 11 de mayo de 2024 comenzó nuestra aventura oficial, pero yo ya soñaba contigo desde antes</p>
+    <div class="contador" id="c2"></div>
+    <p class="mensaje">Contigo todo tiene sentido, mi Belencita preciosa. Te amo más cada día</p>
+  </section>
+
+  <section id="nacimiento">
+    <div class="heart-shape"></div>
+    <h2>Desde que tú naciste</h2>
+    <p class="mensaje">El 21 de junio de 2006 nació el ángel que iluminaría mi vida entera</p>
+    <div class="contador" id="c3"></div>
+    <p class="mensaje">Eres lo más bonito que le ha pasado a este mundo... y a mí también, mi cielito</p>
+  </section>
+
+  <section id="poemas">
+    <h2> Mi Belencita</h2>
+
+    <div class="poema">
+      <p>Mi cielito, tu belleza no tiene medida,<br>tu mirada es un poema que se escribe solo.<br>Cada día contigo es la prueba más dulce<br>de que el amor verdadero sí existe.</p>
+      <button onclick="leer(this.previousElementSibling.innerText)">💖 Escuchar</button>
+    </div>
+
+    <div class="poema">
+      <p>Belencita, eres como un amanecer lento,<br>suave, puro, brillante y eterno.<br>Tu sonrisa es el sol que ilumina mi alma,<br>y tu voz, la melodía que calma.</p>
+      <button onclick="leer(this.previousElementSibling.innerText)">💖 Escuchar</button>
+    </div>
+
+    <div class="poema">
+      <p>Mi niña, si supieras lo linda que eres...<br>hasta los ángeles se sonrojan al verte.<br>Cada pestañeo tuyo es arte,<br>y cada paso, una danza celestial.</p>
+      <button onclick="leer(this.previousElementSibling.innerText)">💖 Escuchar</button>
+    </div>
+
+    <div class="poema">
+      <p>Tu belleza, mi cielito, no está solo en tu rostro,<br>está en tu alma, en tu ternura, en tu risa.<br>Eres el poema más hermoso<br>que este mundo ha podido escribir.</p>
+      <button onclick="leer(this.previousElementSibling.innerText)">💖 Escuchar</button>
+    </div>
+  </section>
+
+  <script>
+    function contador(fecha, id) {
+      const inicio = new Date(fecha);
+      function actualizar() {
+        const ahora = new Date();
+        const diff = ahora - inicio;
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const minutos = Math.floor(diff / (1000 * 60)) % 60;
+        const segundos = Math.floor(diff / 1000) % 60;
+        document.getElementById(id).textContent = `${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos contigo ❤️`;
+      }
+      actualizar();
+      setInterval(actualizar, 1000);
+    }
+
+    contador("2024-03-26T00:00:00", "c1");
+    contador("2024-05-11T00:00:00", "c2");
+    contador("2006-06-21T00:00:00", "c3");
+
+    function leer(texto) {
+      const u = new SpeechSynthesisUtterance(texto);
+      u.lang = 'es-ES';
+      u.rate = 1;
+      speechSynthesis.speak(u);
+    }
+
+    function mostrarMusica() {
+      const videoId = "jBWkdm5zK_A"; // ID del video de YouTube
+      const iframe = document.getElementById("youtubeFrame");
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0`;
+      document.getElementById("youtubePlayer").style.display = "block";
+      document.getElementById("playMusicBtn").style.display = 'none';
+    }
+  </script>
+</body>
+</html>
